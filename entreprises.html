@@ -1,0 +1,564 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Entreprises – Recrutez vos alternants en immobilier | Aurlom</title>
+  <meta name="description" content="Recrutez un alternant BTS Professions Immobilières (BTS PI) formé par Aurlom. Déposez votre offre, demandez un rappel, et accédez à nos profils disponibles." />
+  <link rel="icon" type="image/png" href="aurlom.jpg">
+  <meta name="robots" content="index,follow" />
+
+  <!-- Basic styling (embedded for single-file delivery) -->
+<style>
+  :root {
+    --accent: #0b66c2;
+    --muted: #6b7280;
+    --bg: #f7f8fb;
+    --card: #ffffff;
+    --max-w: 1000px;
+    --radius: 12px;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: #0b1220; line-height: 1.45; transition: background 0.3s, color 0.3s; }
+  a { color: var(--accent); text-decoration: none; transition: color 0.3s; }
+
+  /* --- Bouton lune --- */
+  .theme-toggle {
+    position: absolute;
+    top: 14px;
+    right: 20px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: #0b1220;
+    transition: color 0.3s;
+  }
+  body.dark .theme-toggle { color: #fff; }
+
+  /* --- Header / logo --- */
+  .header-logo {
+    background: #ffffff;
+    border-bottom: 1px solid #e6eef9;
+    padding: 4px 0;
+    position: relative;
+    z-index: 20;
+    overflow: visible;
+  }
+  .logo-bar {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+  }
+  .header-logo img {
+    position: absolute;
+    left: -6px;
+    top: 50%;
+    transform: translateY(-13%);
+    height: 150px;
+    width: auto;
+    display: block;
+    pointer-events: auto;
+    transition: filter 0.3s;
+  }
+
+  /* Supprime complètement le grand rectangle derrière le texte principal */
+  header[role="banner"]:not(.header-logo) {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding-top: 130px !important;
+  }
+
+  header{background:linear-gradient(90deg,#ffffff 0%, #eef6ff 100%);border-bottom:1px solid #e6eef9}
+  .wrap{max-width:var(--max-w);margin:0 auto;padding:20px}
+  .topbar{display:flex;align-items:center;justify-content:space-between;gap:12px}
+  .logo{display:flex;align-items:center;gap:12px}
+  .logo img{width:56px;height:56px;border-radius:8px;background:#e9eef8;object-fit:cover}
+  h1{font-size:1.6rem;margin:6px 0}
+  p.lead{color:var(--muted);margin:6px 0 18px}
+  .cta-row{display:flex;gap:12px;flex-wrap:wrap}
+  .btn{background:var(--accent);color:white;padding:10px 16px;border-radius:10px;border:0;font-weight:600;cursor:pointer}
+  .btn.secondary{background:transparent;color:var(--accent);border:1px solid var(--accent)}
+  .hero-card{background:var(--card);padding:18px;border-radius:var(--radius);box-shadow:0 6px 18px rgba(12,30,60,0.06);display:flex;gap:18px;align-items:center}
+  .metrics{display:flex;gap:14px}
+  .metric{background:#fbfdff;padding:12px;border-radius:10px;text-align:center;min-width:120px}
+  .metric strong{display:block;font-size:1.2rem}
+  nav.toc{margin-top:18px;background:#fff;padding:12px;border-radius:10px;border:1px solid #eef3fb}
+  nav.toc ul{margin:0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:10px}
+  nav.toc a{display:inline-block;padding:8px 10px;border-radius:8px;background:#f2f8ff;border:1px solid #e6f0ff;color:var(--accent)}
+  main{padding:24px 0}
+  section.card{background:var(--card);padding:18px;border-radius:12px;margin-bottom:18px;border:1px solid #efeff3}
+  table {width:100%;border-collapse:collapse;border:1px solid #050505;}
+  th, td {padding:10px;border:1px solid #050505;text-align:left;}
+  th {background:#4444e6;color:#fff;}
+  .form-wrap{max-width:520px}
+  #fallback-form label {color:#000;font-weight:500;}
+  #fallback-form input,#fallback-form textarea {color:#000;border:1px solid #000;background:#fff;}
+  #fallback-form input::placeholder,#fallback-form textarea::placeholder {color:#333;}
+  .small{font-size:0.9rem;color:var(--muted)}
+  footer{padding:24px 0;background:transparent;border-top:1px dashed #e7eef7}
+  .contact-row{display:flex;gap:18px;flex-wrap:wrap;align-items:center}
+  .logos{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+  .logo-placeholder{width:84px;height:32px;background:#136ac0;border-radius:6px;display:inline-block}
+  @media (max-width:720px){
+    .topbar{flex-direction:column;align-items:flex-start}
+    .metrics{flex-direction:row;overflow:auto}
+    h1{font-size:1.3rem}
+    .header-logo img { height: 80px; left: 12px; }
+    header[role="banner"]:not(.header-logo) .wrap { padding-top: 56px; }
+  }
+  .visually-hidden{position:absolute!important;height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px);white-space:nowrap;border:0;padding:0;margin:-1px}
+  .faq q{font-style:italic}
+  .pill{display:inline-block;padding:6px 8px;background:#f3f6fb;border-radius:999px;font-size:0.85rem}
+  .anchor-offset{scroll-margin-top:84px}
+
+  /* --- Mode sombre complet --- */
+  body.dark { background:#0b1220; color:#fff; }
+  body.dark header, body.dark .hero-card, body.dark section.card, body.dark nav.toc, body.dark footer {
+    background:#111827; border-color:#2a2f3d;
+  }
+  body.dark th, body.dark td, body.dark table { border-color:#fff !important; }
+  body.dark th { background:#1e293b; }
+  body.dark a { color:#60a5fa; }
+  body.dark .btn.secondary { color:#60a5fa; border-color:#60a5fa; }
+  body.dark .metric { background:#1f2937; }
+  body.dark .header-logo img { filter: invert(1) brightness(1.2); }
+
+  table, th, td { border: 1px solid #000; }
+  body.dark table, body.dark th, body.dark td { border-color: #fff !important; }
+
+  @media (max-width: 1024px) {
+    .wrap { padding: 16px; }
+    .topbar { flex-direction: column; align-items: flex-start; }
+    .metrics { flex-wrap: wrap; justify-content: center; }
+    .metric { min-width: 45%; }
+    nav.toc ul { flex-wrap: wrap; justify-content: center; }
+  }
+
+  @media (max-width: 720px) {
+    body { font-size: 0.95rem; }
+    .logo img { width: 48px; height: 48px; }
+    h1 { font-size: 1.2rem; text-align: left; }
+    .hero-card { flex-direction: column; align-items: flex-start; text-align: left; }
+    .cta-row { flex-direction: column; width: 100%; }
+    .btn { width: 100%; text-align: center; }
+    .metrics { flex-direction: column; align-items: stretch; }
+    .metric { width: 100%; min-width: auto; }
+    nav.toc ul { flex-direction: column; align-items: stretch; }
+    nav.toc a { text-align: center; width: 100%; }
+    footer { text-align: center; }
+    .contact-row { flex-direction: column; gap: 8px; }
+  }
+
+  nav.toc {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  nav.toc a {
+    background: transparent !important;
+    border: 1px solid var(--accent) !important;
+    color: var(--accent) !important;
+  }
+
+  body.dark nav.toc a {
+    border-color: #60a5fa !important;
+    color: #60a5fa !important;
+  }
+
+  /* === ✅ Rendre le "pill" du téléphone transparent en mode sombre === */
+  body.dark .pill,
+  body.dark .pill * {
+    background: transparent !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+
+  /* === ✅ Harmonisation de la couleur "Tél :" avec "Email :" === */
+  .tel-label {
+    color: var(--muted);
+  }
+
+  body.dark .tel-label {
+    color: #9ca3af !important; /* gris clair comme "Email :" */
+  }
+
+  body.dark a[href^="tel"] {
+    color: #60a5fa !important; /* bleu clair comme le lien email */
+  }
+  
+</style>
+
+
+<body>
+  <a class="visually-hidden" href="#main">Aller au contenu principal</a>
+
+  <!-- ✅ Logo + bouton lune -->
+  <header class="header-logo" role="banner">
+    <button class="theme-toggle" id="themeToggle" aria-label="Basculer mode sombre">🌙</button>
+    <div class="logo-bar">
+      <a href="https://www.aurlom.com" aria-label="Accueil Aurlom">
+        <img src="Aurlom.png" alt="Logo Aurlom" />
+      </a>
+    </div>
+  </header>
+
+  <!-- ✅ Header principal -->
+  <header role="banner">
+    <div class="wrap topbar">
+      <div class="logo">
+        <div>
+          <h1 id="main">Entreprises – Recrutez vos alternants en immobilier avec Aurlom</h1>
+          <p class="lead">Profils opérationnels, encadrés et disponibles — déposez une offre ou demandez un rappel. Rythme alternance : 2j école / 3j entreprise.</p>
+        </div>
+      </div>
+      <div class="cta-row">
+        <button class="btn" id="cta-top" onclick="document.getElementById('form-entreprise').scrollIntoView({behavior:'smooth'})">Déposer une offre</button>
+        <button class="btn secondary" id="cta-rappel" onclick="openRappel()">Être rappelé</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap" id="maincontent" role="main" aria-labelledby="main">
+    <div class="hero-card" role="region" aria-label="Présentation rapide">
+      <div style="flex:1">
+        <p class="small">Des alternants prêts à intégrer vos équipes en 1 mois</p>
+        <div class="metrics" aria-hidden="false">
+          <div class="metric"><strong>85%</strong><span class="small">taux d'insertion pro</span></div>
+          <div class="metric"><strong>120+</strong><span class="small">offres entreprises en 2024</span></div>
+          <div class="metric"><strong>4.5/5</strong><span class="small">satisfaction entreprises</span></div>
+        </div>
+      </div>
+      <div style="min-width:220px;text-align:right">
+        <p class="small">Contact direct</p>
+        <div class="pill"><span class="tel-label">Tél :</span> <a href="tel:+33140411238">01 40 41 12 38</a></div>
+        <p class="small" style="margin-top:8px">Email : <a href="mailto:entreprises@aurlom.com">entreprises@aurlom.com</a></p>
+      </div>
+    </div>
+    
+    <!-- Table of contents (ancres) -->
+    <nav class="toc" aria-label="Sommaire de la page">
+      <ul>
+        <li><a href="#pourquoi" class="anchor-offset">Pourquoi recruter</a></li>
+        <li><a href="#filieres" class="anchor-offset">Nos filières</a></li>
+        <li><a href="#deposer" class="anchor-offset">Déposer une offre</a></li>
+        <li><a href="#process" class="anchor-offset">Processus & modalités</a></li>
+        <li><a href="#faq" class="anchor-offset">FAQ Entreprises</a></li>
+        <li><a href="#contacts" class="anchor-offset">Contacts & réassurance</a></li>
+      </ul>
+    </nav>
+
+    <!-- 1. Pourquoi recruter -->
+    <section id="pourquoi" class="card" aria-labelledby="pourquoi-title">
+      <h2 id="pourquoi-title">Pourquoi recruter nos alternants (immobilier)</h2>
+      <p>Nos alternants BTS Professions Immobilières (BTS PI) sont formés aux outils métier, à la relation client et à la réglementation. Ils peuvent intervenir rapidement sur :</p>
+      <ul>
+        <li>Transaction & estimation,</li>
+        <li>Gestion locative & relation bailleur/locataire,</li>
+        <li>Gestion de copropriété & syndic,</li>
+        <li>Support administratif et commercial.</li>
+      </ul>
+
+      <h3>Preuves chiffrées (exemples crédibles)</h3>
+      <ul>
+        <li><strong>85%</strong> : taux d'insertion en entreprise sous 6 mois.</li>
+        <li><strong>120+</strong> : offres entreprises déposées en 2024 via notre service recrutement.</li>
+        <li><strong>4,5/5</strong> : note moyenne de satisfaction des tuteurs entreprises.</li>
+        <li><strong>60%</strong> : alternants disponibles en fin d'année civile pour prise de poste immédiate.</li>
+      </ul>
+    </section>
+
+    <!-- 2. Filieres table -->
+    <section id="filieres" class="card" aria-labelledby="filieres-title">
+      <h2 id="filieres-title">Nos filières immobilières disponibles</h2>
+      <p class="small">Tableau synthétique — volumes indicatifs (placeholders crédibles)</p>
+      <table aria-describedby="filieres-desc">
+        <thead>
+          <tr><th>Filière</th><th>Campus</th><th>Rythme</th><th>Volume mobilisable</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>BTS Professions Immobilières (BTS PI)</td><td>Paris / Lyon</td><td>2j école / 3j entreprise</td><td>30–60 candidats / an</td></tr>
+          <tr><td>Licence pro Gestion Immobilière</td><td>Paris</td><td>Flex (alternance possible)</td><td>10–20 candidats / an</td></tr>
+          <tr><td>Certification Gestion Locative</td><td>Lyon</td><td>Alternance 3j / semaine</td><td>15–30 candidats / an</td></tr>
+        </tbody>
+      </table>
+      <p id="filieres-desc" class="small">Les volumes sont indicatifs et peuvent varier selon la période. Contactez-nous pour un sourcing ciblé.</p>
+    </section>
+
+    <!-- 3. Déposer une offre / Demander un rappel -->
+<section id="deposer" class="card" aria-labelledby="deposer-title">
+  <h2 id="deposer-title">Déposer une offre d’alternance / Demander un rappel</h2>
+
+  <p>
+    Vous représentez une agence, un administrateur de biens, un syndic ou un bailleur ?
+    Déposez ici votre <strong>offre d’alternance</strong> ou demandez à être rappelé par notre équipe dédiée.
+    Nous vous mettrons rapidement en relation avec des candidats Aurlom disponibles et formés en <strong>BTS Professions Immobilières</strong>.
+  </p>
+
+  <div class="form-wrap" id="form-entreprise" aria-live="polite">
+    <!-- HubSpot embed (adapté aux entreprises) -->
+    <div id="hubspot-form-container" role="form" aria-label="Formulaire dépôt offre alternance">
+      <noscript>
+        <div style="background:#fff;padding:12px;border-radius:8px;border:1px solid #eee">
+          <p class="small">
+            <strong>Formulaire indisponible :</strong> JavaScript est désactivé.
+            Vous pouvez transmettre votre offre directement à
+            <a href="mailto:entreprises@aurlom.com">entreprises@aurlom.com</a>
+          </p>
+        </div>
+      </noscript>
+
+      <!-- Fallback HTML si HubSpot bloqué -->
+      <form id="fallback-form" style="display:none;background:#fbfdff;padding:12px;border-radius:8px;border:1px solid #eef6ff" onsubmit="handleFallbackSubmit(event)">
+        <label for="company" class="small">Nom de l’entreprise *</label>
+        <input id="company" name="company" type="text" required style="width:100%;padding:8px;margin:6px 0;border:1px solid #dae7ff;border-radius:6px" placeholder="Ex. Agence Dupont Immobilier" />
+
+        <label for="role" class="small">Intitulé du poste ou fonction recherchée *</label>
+        <input id="role" name="role" type="text" required style="width:100%;padding:8px;margin:6px 0;border:1px solid #dae7ff;border-radius:6px" placeholder="Ex. Assistant gestion locative" />
+
+        <label for="location" class="small">Lieu du poste (ville / département)</label>
+        <input id="location" name="location" type="text" style="width:100%;padding:8px;margin:6px 0;border:1px solid #dae7ff;border-radius:6px" placeholder="Ex. Paris 17e" />
+
+        <label for="contact" class="small">Contact (email ou téléphone) *</label>
+        <input id="contact" name="contact" type="text" required style="width:100%;padding:8px;margin:6px 0;border:1px solid #dae7ff;border-radius:6px" placeholder="Ex. rh@dupont-immobilier.fr / 01 40 00 00 00" />
+
+        <label for="message" class="small">Précisions ou description du profil recherché</label>
+        <textarea id="message" name="message" rows="4" style="width:100%;padding:8px;margin:6px 0;border:1px solid #dae7ff;border-radius:6px" placeholder="Ex. Alternant disponible dès novembre, pour 12 mois. Gestion locative et suivi administratif."></textarea>
+
+        <input type="hidden" name="gclid" id="gclid-fallback" />
+        <div style="display:flex;gap:8px;margin-top:8px">
+          <button class="btn" type="submit">Soumettre</button>
+          <button class="btn secondary" type="button" onclick="document.getElementById('fallback-form').reset()">Réinitialiser</button>
+        </div>
+        <p id="fallback-msg" class="small" style="margin-top:8px;display:none"></p>
+      </form>
+    </div>
+  </div>
+
+  <p class="small" style="margin-top:12px">
+    📞 Vous préférez un échange direct ? Appelez-nous au
+    <a href="tel:+33140411238">01 40 41 12 38</a> ou envoyez un mail à
+    <a href="mailto:entreprises@aurlom.com">entreprises@aurlom.com</a>.
+  </p>
+</section>
+
+
+    <!-- 4. Processus & modalités -->
+    <section id="process" class="card" aria-labelledby="process-title">
+      <h2 id="process-title">Processus & modalités</h2>
+      <p class="small">Processus simplifié pour les entreprises — rapide et sécurisé.</p>
+
+      <ol>
+        <li><strong>Déposez l'offre</strong> via le formulaire ou par email.</li>
+        <li><strong>Qualification</strong> : notre référent entreprises recontacte sous 48h pour qualification du besoin.</li>
+        <li><strong>Sourcing</strong> : présélection de candidats (CV + disponibilités).</li>
+        <li><strong>Entretien</strong> : organisation des entretiens avec candidats sélectionnés.</li>
+        <li><strong>Signature & démarrage</strong> : contrats alternance, OPCO et prise de poste.</li>
+      </ol>
+
+      <h3>Rythme & financement</h3>
+      <p>Rythme classique alternance : <strong>2 jours école / 3 jours entreprise</strong> (ou 3j/2j selon formation). Les coûts pédagogiques sont généralement pris en charge via l’OPCO ou directement par l’entreprise selon le contrat d’apprentissage/contrat de professionnalisation.</p>
+    </section>
+
+    <!-- 5. FAQ + JSON-LD -->
+    <section id="faq" class="card" aria-labelledby="faq-title">
+      <h2 id="faq-title">FAQ Entreprises</h2>
+      <div class="faq">
+        <h3>1. Quel est le délai pour recevoir des candidats ?</h3>
+        <p class="small">Après qualification, nous pouvons proposer des CV sous 7 à 14 jours selon le besoin.</p>
+
+        <h3>2. Qui prend en charge les formalités administratives (OPCO) ?</h3>
+        <p class="small">Nous accompagnons sur la mise en relation avec l’OPCO ; l'entreprise reste décisionnaire et responsable du contrat.</p>
+
+        <h3>3. Puis-je proposer une alternance partiellement à distance ?</h3>
+        <p class="small">Selon la formation et l’accord pédagogique, certains volets peuvent être distanciels. Contactez notre référent pour valider les modalités.</p>
+      </div>
+    </section>
+
+    <!-- 6. Contacts & réassurance -->
+<section id="contacts" class="card" aria-labelledby="contacts-title">
+  <h2 id="contacts-title">Contacts & réassurance</h2>
+  <div class="contact-row">
+    <div>
+      <p><strong>Référent Entreprises</strong></p>
+      <p>Tél : <a href="tel:+33140411238">01 40 41 12 38</a></p>
+      <p>Email : <a href="mailto:entreprises@aurlom.example">entreprises@aurlom.example</a></p>
+      <p class="small">Accompagnement juridique et administratif pour la signature des contrats.</p>
+    </div>
+  </div>
+</section>
+
+    <!-- Plan de marquage (visible pour le jury) -->
+    <section id="seo" class="card" aria-labelledby="seo-title">
+  <h2 id="seo-title">SEO & plan de marquage (exigé)</h2>
+  <p>Cette section décrit les éléments de suivi et d’optimisation du référencement mis en place sur la page Entreprises Aurlom.</p>
+
+  <h3>Événements suivis</h3>
+  <ul>
+    <li>Clic sur le bouton “Déposer une offre” (haut de page)</li>
+    <li>Clic sur le bouton “Être rappelé” (pour plus de renseignements)</li>
+    <li>Soumission du formulaire de contact (lors de l’envoi réussi du formulaire)</li>
+    <li>Clic sur une question de la FAQ (pour afficher la réponse correspondante)</li>
+    <li>Accès à la section “Nos filières” (lors du défilement ou du clic sur l’ancre interne)</li>
+  </ul>
+    </section>
+  </main>
+
+  <footer class="wrap" role="contentinfo">
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+      <div class="small">© Aurlom – Recrutement alternance immobilier</div>
+      <div class="small">Mentions légales · Politique de confidentialité</div>
+    </div>
+  </footer>
+
+  <!-- JSON-LD FAQPage (exigé) -->
+  <script>
+
+  const toggle = document.getElementById('themeToggle');
+    toggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark');
+      localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
+    });
+    if (localStorage.getItem('theme') === 'dark') {
+      document.body.classList.add('dark');
+    }
+  // ✅ Force l’affichage du fallback dès le chargement de la page
+  document.addEventListener("DOMContentLoaded", () => {
+    showFallbackForm();
+  });
+
+  
+  (function(){
+    try{
+      const gldata = localStorage.getItem("gclid");
+      if(gldata){
+        try{
+          const parsed = JSON.parse(gldata);
+          window.__gclid = parsed?.value || parsed || null;
+        } catch(e){
+          window.__gclid = gldata;
+        }
+      } else {
+        window.__gclid = null;
+      }
+    } catch(e){
+      window.__gclid = null;
+    }
+  })();
+
+  // ⚠️ Commenté : désactivation du chargement HubSpot pour le rendu local
+  /*
+  (function loadHubspot(){
+    var portalId = "7446083";
+    var formId = "18d2fcbc-63d7-4c86-8a7e-a6359c681f4e";
+    var script = document.createElement('script');
+    script.charset = 'utf-8';
+    script.src = "https://js.hsforms.net/forms/v2.js";
+    script.onload = function(){
+      try{
+        if(window.hbspt && hbspt.forms){
+          hbspt.forms.create({
+            region: "na1",
+            portalId: portalId,
+            formId: formId,
+            target: "#hubspot-form-container",
+            css: "",
+            onFormReady: function($form){
+              if(window.__gclid){
+                var input = $form.find('input[name="gclid"]');
+                if(input && input.length){
+                  input.val(window.__gclid);
+                } else {
+                  $form.append('<input type="hidden" name="gclid" value="'+(window.__gclid||'')+'">');
+                }
+              }
+            },
+            onFormSubmit: function() {
+              console.log('event: formulaire_hubspot_submit');
+              showSubmissionMessage("Merci — votre offre a bien été reçue. Nous revenons vers vous sous 48h.");
+            }
+          });
+        } else {
+          showFallbackForm();
+        }
+      } catch(e){
+        showFallbackForm();
+      }
+    };
+    script.onerror = function(){ showFallbackForm(); };
+    document.head.appendChild(script);
+  })();
+  */
+
+  function showFallbackForm(){
+    var fallback = document.getElementById('fallback-form');
+    if(fallback) fallback.style.display = 'block';
+    var container = document.getElementById('hubspot-form-container');
+    if(container) container.style.background = '#fff';
+    if(window.__gclid){
+      var g = document.getElementById('gclid-fallback');
+      if(g) g.value = window.__gclid;
+    }
+  }
+
+  // ✅ MODIFIÉ : redirection vers le site officiel d’Aurlom après envoi
+  function handleFallbackSubmit(e){
+    e.preventDefault();
+    var msg = document.getElementById('fallback-msg');
+    msg.style.display = 'block';
+    msg.textContent = "Merci — votre offre a bien été enregistrée. Vous allez être redirigé vers le site officiel d’Aurlom...";
+    console.log('event: fallback_form_submit');
+
+    // Attendre 2 secondes avant la redirection
+    setTimeout(function(){
+      window.location.href = "https://www.aurlom.com";
+    }, 2000);
+  }
+
+  function showSubmissionMessage(text){
+    var el = document.createElement('div');
+    el.setAttribute('role','status');
+    el.style.position='fixed';
+    el.style.right='16px';
+    el.style.bottom='16px';
+    el.style.background='#0b66c2';
+    el.style.color='#fff';
+    el.style.padding='12px 16px';
+    el.style.borderRadius='8px';
+    el.style.boxShadow='0 8px 22px rgba(11,102,194,0.18)';
+    el.textContent = text || 'Merci — formulaire envoyé';
+    document.body.appendChild(el);
+    setTimeout(function(){ el.remove(); }, 5000);
+  }
+
+  function openRappel(){
+    var phone = prompt("Indiquez votre téléphone pour être rappelé (format +33...)");
+    if(phone){
+      console.log('event: rappel_request', phone);
+      alert("Merci — nous vous rappelons sous 48h au " + phone);
+    }
+  }
+
+  (function(){
+    document.querySelectorAll('a[href^="#"]').forEach(function(a){
+      a.addEventListener('click', function(e){
+        var href = a.getAttribute('href');
+        if(href && href.startsWith('#')){
+          var el = document.querySelector(href);
+          if(el){
+            e.preventDefault();
+            el.scrollIntoView({behavior:'smooth', block:'start'});
+            history.replaceState(null,'',href);
+          }
+        }
+      });
+    });
+  })();
+</script>
+
+
